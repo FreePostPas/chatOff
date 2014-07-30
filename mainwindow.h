@@ -6,13 +6,14 @@
 
 class MainWindow : public QMainWindow
 {
+
     Q_OBJECT
 
     public:
-        MainWindow();
+    MainWindow();
 
     public slots:
-        void openGithub();
+    void openGithub();
 };
 
 #endif // MAINWINDOW_H

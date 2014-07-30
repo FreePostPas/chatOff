@@ -2,8 +2,6 @@
 
 MainWindow::MainWindow()
 {
-    Q_OBJECT;
-
     //Menu
     QMenu *fileMenu = menuBar()->addMenu("&Fichier");
         QAction *exportAction = new QAction("Exporter la conversation", this);
