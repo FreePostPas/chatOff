@@ -64,7 +64,23 @@ MainWindow::MainWindow()
         contactList->addWidget(contact2);
         contactList->addStretch(1);
 
-    QLabel *content = new QLabel;
+
+    QStandardItemModel *textContentModel = new QStandardItemModel(0, 2);
+        QList<QStandardItem*> data1, data2, data3;
+
+        data1.append(new QStandardItem("[20:17:01]"));
+        data1.append(new QStandardItem("Yop Adrien, tu es là ?"));
+        data2.append(new QStandardItem("[20:17:37]"));
+        data2.append(new QStandardItem("Oui, ça va "));
+        data3.append(new QStandardItem("[20:18:15]"));
+        data3.append(new QStandardItem("Bien oui"));
+
+        textContentModel->appendRow(data1);
+        textContentModel->appendRow(data2);
+        textContentModel->appendRow(data3);
+
+        QTableView *textContentView = new QTableView;
+        textContentView->setModel(textContentModel);
 
 
     //Main layout main zone
@@ -74,11 +90,9 @@ MainWindow::MainWindow()
         layout->addLayout(contactList);
 
         layout->addWidget(lineV);
-        layout->addStretch(1);
+        //layout->addStretch(1);
 
-
-    QPushButton *blabla = new QPushButton("Test");
-        layout->addWidget(blabla);
+        layout->addWidget(textContentView);
 
 
     mainZone->setLayout(layout);
