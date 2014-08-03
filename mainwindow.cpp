@@ -68,31 +68,38 @@ MainWindow::MainWindow()
     QStandardItemModel *textContentModel = new QStandardItemModel(0, 2);
         QList<QStandardItem*> data1, data2, data3;
 
-        data1.append(new QStandardItem("[20:17:01]"));
-        data1.append(new QStandardItem("Yop Adrien, tu es là ?"));
-        data2.append(new QStandardItem("[20:17:37]"));
-        data2.append(new QStandardItem("Oui, ça va "));
-        data3.append(new QStandardItem("[20:18:15]"));
-        data3.append(new QStandardItem("Bien oui"));
+        data1.append(new QStandardItem(QString("[20:17:01]") + " " + "Yop Adrien, tu es là ?"));
+        data2.append(new QStandardItem(QString("[20:17:37]") + " " + "Oui, ça va "));
+        data3.append(new QStandardItem(QString("[20:18:15]") + " " + "Bien oui"));
 
         textContentModel->appendRow(data1);
         textContentModel->appendRow(data2);
         textContentModel->appendRow(data3);
 
-        QTableView *textContentView = new QTableView;
-        textContentView->setModel(textContentModel);
+    QListView *textContentView = new QListView;
+    textContentView->setModel(textContentModel);
 
+    QLineEdit* sendMessageBox = new QLineEdit;
+
+    QPushButton* sendButton = new QPushButton("Envoyer");
+
+
+
+    QHBoxLayout* formBox = new QHBoxLayout;
+    formBox->addWidget(sendMessageBox);
+    formBox->addWidget(sendButton);
+
+    QVBoxLayout* exchangeZone = new QVBoxLayout;
+    exchangeZone->addWidget(textContentView);
+    exchangeZone->addLayout(formBox);
 
     //Main layout main zone
     QWidget *mainZone = new QWidget;
 
     QHBoxLayout *layout = new QHBoxLayout;
         layout->addLayout(contactList);
-
         layout->addWidget(lineV);
-        //layout->addStretch(1);
-
-        layout->addWidget(textContentView);
+        layout->addLayout(exchangeZone);
 
 
     mainZone->setLayout(layout);
