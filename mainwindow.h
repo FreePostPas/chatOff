@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <vector>
 #include <QMainWindow>
 #include <QtWidgets>
 
@@ -10,7 +11,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
     public:
-    MainWindow();
+    MainWindow(std::vector<QString> usersList);
 
     public slots:
     void openGithub();
